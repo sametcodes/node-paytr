@@ -1,0 +1,26 @@
+{
+  "name": "node-paytr",
+  "version": "1.0.0",
+  "description": "PayTR e-ticaret ödeme sistemi için node kütüphanesi",
+  "main": "paytr.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "paytr"
+  ],
+  "author": "selmansamet",
+  "license": "ISC",
+  "dependencies": {
+    "jssha": "^2.3.1",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}

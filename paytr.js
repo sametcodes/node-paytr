@@ -5,18 +5,20 @@ export default class PayTR{
   constructor(params){
     this.tokenParams = params;
   }
+  estimateHash(str, key){
+    var shaObj = new jsSHA("SHA-256", "TEXT");
+    shaObj.setHMACKey(key, "TEXT");
+    shaObj.update(str);
+    return shaObj.getHMAC("B64");
+  }
   async getToken(userParams){
     var { user_ip, user_name, user_address, user_phone, user_basket, merchant_oid,
       email, payment_amount, currency } = userParams;
     var user_basket = new Buffer(JSON.stringify(user_basket)).toString("base64");
-    const {
-      merchant_id, merchant_key, merchant_salt, no_installment, max_installment,
+    const { merchant_id, merchant_key, merchant_salt, no_installment, max_installment,
       debug_on, merchant_ok_url, merchant_fail_url, timeout_limit, test_mode } = this.tokenParams;
     const hash_str = `${merchant_id}${user_ip}${merchant_oid}${email}${payment_amount}${user_basket}${no_installment}${max_installment}${currency}${test_mode}`;
-    var shaObj = new jsSHA("SHA-256", "TEXT");
-    shaObj.setHMACKey(merchant_key, "TEXT");
-    shaObj.update(`${hash_str}${merchant_salt}`);
-    const paytr_token = shaObj.getHMAC("B64");
+    const paytr_token = this.estimateHash(`${hash_str}${merchant_salt}`, merchant_key);
     const options = {
       method: "POST",
       uri: 'https://www.paytr.com/odeme/api/get-token',

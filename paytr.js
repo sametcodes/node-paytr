@@ -41,4 +41,14 @@ export default class PayTR{
       });
     })
   }
+  getPost(params, callback){
+    const { merchant_key, merchant_salt } = this.tokenParams;
+    const { hash, merchant_oid, status, total_amount}  = params;
+    const estimatedHash = this.estimateHash(`${merchant_oid}${merchant_salt}${status}${total_amount}`, merchant_key);
+    if(hash === estimatedHash){
+      callback(params);
+    }else{
+      throw new Error("Hash value not equal");
+    }
+  }
 }

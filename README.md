@@ -1,15 +1,34 @@
-> Henüz geliştirilmektedir.
+> Henüz geliştirilmektedir. PayTR'nin resmi bir modülü değildir.
 
-> Açıklama eklenecek.
+Bu modül ile PayTR API tarafına göndereceğiniz istek üzerine **token** alabilir, oluşturacağınız sipariş sonrası gelecek POST isteklerini karşılayabilirsiniz.
 
-### Kod örneği
-> Buraya kod örneği eklenecek.
+### Sözde kod
+
+```javascript
+...
+
+import PayTR from 'node-paytr';
+
+const paytr = new PayTR(merchant_params);
+
+server.express.post('/get_token', (req, res) => {
+    const user_params = req.body();
+    res.send(paytr.getToken(user_params));
+})
+
+server.express.post('/callback', (req, res) => {
+  paytr.getPost(req.body, ({merchant_oid, status}) => {
+    //...
+  });
+  res.send("OK");
+})
+```
 
 ### Parametreler
 
 Değerler hakkında daha fazla bilgi için entegrasyon dökümanınıza göz atın.
 
-| merchant_configs       | type
+| merchant_params       | type
 | --------          | -----------
 | merchant_id       | string
 | merchant_key      | string
@@ -23,7 +42,7 @@ Değerler hakkında daha fazla bilgi için entegrasyon dökümanınıza göz at�
 | test_mode         | integer
 
 
-| getToken       | type
+| user_params       | type
 | --------       | -----------
 | user_ip        | string
 | user_name      | string
@@ -34,3 +53,8 @@ Değerler hakkında daha fazla bilgi için entegrasyon dökümanınıza göz at�
 | email          | string
 | payment_amount | integer
 | currency       | string
+
+| post_params        | type
+| --------       | -----------
+| body           | object
+| callback       | function

@@ -5,12 +5,21 @@ export default class PayTR{
   constructor(params){
     this.tokenParams = params;
   }
+  /*
+    * HMAC HASH değerini hesaplar
+    * @param {string} str - kullanıcı ve satıcı ile ilgili bir çok bilginin bulunduğu birleştirilmiş string veridir
+    * @param {string} key - merchant_key değeridir
+  */
   estimateHash(str, key){
     var shaObj = new jsSHA("SHA-256", "TEXT");
     shaObj.setHMACKey(key, "TEXT");
     shaObj.update(str);
     return shaObj.getHMAC("B64");
   }
+  /*
+    * PayTR'ye parametrede verilen bilgiler ile token isteğinde bulunan işlevdir
+    * @param {object} userParams - kullanıcı ip bilgisi, adı, adresi, telefonu gibi bilgileri içerir
+  */
   async getToken(userParams){
     var { user_ip, user_name, user_address, user_phone, user_basket, merchant_oid,
       email, payment_amount, currency } = userParams;
@@ -41,6 +50,11 @@ export default class PayTR{
       });
     })
   }
+  /*
+    * PayTR'den gelen POST isteğinin HMAC Hash doğruluğunu kontrol der, doğruysa callback çalıştırır, yanlışsa hata döner  
+    * @param {object} params - POST body içeriğidir
+    * @param {function} callback - HMAC Hash değeri doğru ise POST body içeriğini gönderir
+  */
   getPost(params, callback){
     const { merchant_key, merchant_salt } = this.tokenParams;
     const { hash, merchant_oid, status, total_amount}  = params;

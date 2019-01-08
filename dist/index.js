@@ -40,6 +40,15 @@ var PayTR = exports.PayTR = function () {
   }, {
     key: "getToken",
     value: async function getToken(userParams) {
+      var _tokenParams = this.tokenParams,
+          merchant_id = _tokenParams.merchant_id,
+          merchant_key = _tokenParams.merchant_key,
+          merchant_salt = _tokenParams.merchant_salt,
+          no_installment = _tokenParams.no_installment,
+          max_installment = _tokenParams.max_installment,
+          debug_on = _tokenParams.debug_on,
+          timeout_limit = _tokenParams.timeout_limit,
+          test_mode = _tokenParams.test_mode;
       var user_ip = userParams.user_ip,
           user_name = userParams.user_name,
           user_address = userParams.user_address,
@@ -48,21 +57,11 @@ var PayTR = exports.PayTR = function () {
           merchant_oid = userParams.merchant_oid,
           email = userParams.email,
           payment_amount = userParams.payment_amount,
-          currency = userParams.currency;
+          currency = userParams.currency,
+          merchant_ok_url = userParams.merchant_ok_url,
+          merchant_fail_url = userParams.merchant_fail_url;
 
       var user_basket = new Buffer(JSON.stringify(user_basket)).toString("base64");
-      var _tokenParams = this.tokenParams,
-          merchant_id = _tokenParams.merchant_id,
-          merchant_key = _tokenParams.merchant_key,
-          merchant_salt = _tokenParams.merchant_salt,
-          no_installment = _tokenParams.no_installment,
-          max_installment = _tokenParams.max_installment,
-          debug_on = _tokenParams.debug_on,
-          merchant_ok_url = _tokenParams.merchant_ok_url,
-          merchant_fail_url = _tokenParams.merchant_fail_url,
-          timeout_limit = _tokenParams.timeout_limit,
-          test_mode = _tokenParams.test_mode;
-
       var hash_str = "" + merchant_id + user_ip + merchant_oid + email + payment_amount + user_basket + no_installment + max_installment + currency + test_mode;
       var paytr_token = this.estimateHash("" + hash_str + merchant_salt, merchant_key);
       var options = {

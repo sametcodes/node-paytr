@@ -38,7 +38,7 @@ Değerler hakkında daha fazla bilgi için entegrasyon dökümanınıza göz at�
 | max_installment   | alfanumerik
 | merchant_ok_url   | string
 | merchant_fail_url | string
-| timout_limit      | integer
+| timeout_limit      | integer
 | test_mode         | integer
 
 
@@ -48,7 +48,7 @@ Değerler hakkında daha fazla bilgi için entegrasyon dökümanınıza göz at�
 | user_name      | string
 | user_address   | string
 | user_phone     | string
-| user_basket    | string
+| user_basket    | array
 | merchant_oid   | alfanumerik
 | email          | string
 | payment_amount | integer

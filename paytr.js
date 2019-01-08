@@ -1,7 +1,7 @@
 const request = require("request");
 const jsSHA = require("jssha");
 
-export default class PayTR{
+export class PayTR{
   constructor(params){
     this.tokenParams = params;
   }
@@ -65,4 +65,6 @@ export default class PayTR{
       throw new Error("Hash value not equal");
     }
   }
-}
+};
+
+module.exports = PayTR;

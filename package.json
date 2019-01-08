@@ -2,7 +2,7 @@
   "name": "node-paytr",
   "version": "1.0.0",
   "description": "PayTR e-ticaret ödeme sistemi için node kütüphanesi",
-  "main": "paytr.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

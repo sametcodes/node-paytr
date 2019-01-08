@@ -36,11 +36,8 @@ Değerler hakkında daha fazla bilgi için entegrasyon dökümanınıza göz at�
 | debug_on          | boolean
 | no_installment    | boolean
 | max_installment   | alfanumerik
-| merchant_ok_url   | string
-| merchant_fail_url | string
 | timeout_limit      | integer
 | test_mode         | integer
-
 
 | user_params       | type
 | --------       | -----------
@@ -53,6 +50,8 @@ Değerler hakkında daha fazla bilgi için entegrasyon dökümanınıza göz at�
 | email          | string
 | payment_amount | integer
 | currency       | string
+| merchant_ok_url   | string
+| merchant_fail_url | string
 
 | post_params        | type
 | --------       | -----------

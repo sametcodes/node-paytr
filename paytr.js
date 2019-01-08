@@ -21,18 +21,18 @@ export default class PayTR{
     * @param {object} userParams - kullanıcı ip bilgisi, adı, adresi, telefonu gibi bilgileri içerir
   */
   async getToken(userParams){
+    var { merchant_id, merchant_key, merchant_salt, no_installment, max_installment,
+      debug_on, timeout_limit, test_mode } = this.tokenParams;
     var { user_ip, user_name, user_address, user_phone, user_basket, merchant_oid,
-      email, payment_amount, currency } = userParams;
+      email, payment_amount, currency, merchant_ok_url, merchant_fail_url } = userParams;
     var user_basket = new Buffer(JSON.stringify(user_basket)).toString("base64");
-    const { merchant_id, merchant_key, merchant_salt, no_installment, max_installment,
-      debug_on, merchant_ok_url, merchant_fail_url, timeout_limit, test_mode } = this.tokenParams;
     const hash_str = `${merchant_id}${user_ip}${merchant_oid}${email}${payment_amount}${user_basket}${no_installment}${max_installment}${currency}${test_mode}`;
     const paytr_token = this.estimateHash(`${hash_str}${merchant_salt}`, merchant_key);
     const options = {
       method: "POST",
       uri: 'https://www.paytr.com/odeme/api/get-token',
       formData: {
-        merchant_id, user_ip, merchant_oid, email: email, payment_amount, paytr_token,
+        merchant_id, user_ip, merchant_oid, email, payment_amount, paytr_token,
         user_basket, debug_on, no_installment, max_installment, user_name, user_address,
         user_phone, merchant_ok_url, merchant_fail_url, timeout_limit, currency, test_mode
       }

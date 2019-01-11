@@ -37,6 +37,10 @@ export class PayTR{
         user_phone, merchant_ok_url, merchant_fail_url, timeout_limit, currency, test_mode
       }
     };
+    var nullValues = Object.entries(options.formData).filter(([key, value]) => [undefined, null, ""].includes(value));
+    if(nullValues.length > 0){
+        throw new Error("getToken params cannot includes null, undefined or empty string.")    
+    }
     return await new Promise((res, rej) => {
       request(options, function (error, response, body) {
         if (error) throw new Error(error);

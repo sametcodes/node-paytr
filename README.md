@@ -1,6 +1,10 @@
-> Henüz geliştirilmektedir. PayTR'nin resmi bir modülü değildir.
+> PayTR'nin resmi bir modülü değildir.
 
 Bu modül ile PayTR API tarafına göndereceğiniz istek üzerine **token** alabilir, oluşturacağınız sipariş sonrası gelecek POST isteklerini karşılayabilirsiniz.
+
+### Yüklemek
+
+`npm install node-paytr`
 
 ### Sözde kod
 

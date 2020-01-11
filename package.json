@@ -1,6 +1,6 @@
 {
   "name": "node-paytr",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "PayTR e-ticaret ödeme sistemi için node kütüphanesi",
   "main": "dist/index.js",
   "scripts": {

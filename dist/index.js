@@ -67,8 +67,7 @@ var PayTR = exports.PayTR = function () {
       var hash_str = "" + merchant_id + user_ip + merchant_oid + email + payment_amount + user_basket + no_installment + max_installment + currency + test_mode;
       var paytr_token = this.estimateHash("" + hash_str + merchant_salt, merchant_key);
       var options = {
-        method: "POST",
-        uri: 'https://www.paytr.com/odeme/api/get-token',
+        url: 'https://www.paytr.com/odeme/api/get-token',
         formData: {
           merchant_id: merchant_id, user_ip: user_ip, merchant_oid: merchant_oid, email: email, payment_amount: payment_amount, paytr_token: paytr_token,
           user_basket: user_basket, debug_on: debug_on, no_installment: no_installment, max_installment: max_installment, user_name: user_name, user_address: user_address,
@@ -86,7 +85,7 @@ var PayTR = exports.PayTR = function () {
         throw new Error("getToken params cannot includes null, undefined or empty string.");
       }
       return await new Promise(function (res, rej) {
-        request(options, function (error, response, body) {
+        request.post(options, function (error, response, body) {
           if (error) throw new Error(error);
 
           var _JSON$parse = JSON.parse(body),

@@ -29,8 +29,7 @@ export class PayTR{
     const hash_str = `${merchant_id}${user_ip}${merchant_oid}${email}${payment_amount}${user_basket}${no_installment}${max_installment}${currency}${test_mode}`;
     const paytr_token = this.estimateHash(`${hash_str}${merchant_salt}`, merchant_key);
     const options = {
-      method: "POST",
-      uri: 'https://www.paytr.com/odeme/api/get-token',
+      url: 'https://www.paytr.com/odeme/api/get-token',
       formData: {
         merchant_id, user_ip, merchant_oid, email, payment_amount, paytr_token,
         user_basket, debug_on, no_installment, max_installment, user_name, user_address,
@@ -42,7 +41,7 @@ export class PayTR{
         throw new Error("getToken params cannot includes null, undefined or empty string.")    
     }
     return await new Promise((res, rej) => {
-      request(options, function (error, response, body) {
+      request.post(options, function (error, response, body) {
         if (error) throw new Error(error);
         const {status, reason, token} = JSON.parse(body);
         if(status === "failed"){

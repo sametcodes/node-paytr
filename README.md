@@ -2,7 +2,7 @@
 
 Bu modül ile PayTR API tarafına göndereceğiniz istek üzerine **token** alabilir, oluşturacağınız sipariş sonrası gelecek POST isteklerini karşılayabilirsiniz.
 
-React uygulamanız üzerinde [ubeytdemirr/react-paytr](https://github.com/ubeytdemirr/react-paytr) bileşeni ile birlikte kullanabilirsiniz.
+React uygulamanız üzerinde [react-paytr](https://www.npmjs.com/package/react-paytr) bileşeni ile birlikte kullanabilirsiniz.
 
 ### Yüklemek
 

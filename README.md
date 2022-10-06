@@ -1,18 +1,17 @@
-> PayTR'nin resmi bir modülü değildir.
+> It's not an official package of PayTR.
 
-Bu modül ile PayTR API tarafına göndereceğiniz istek üzerine **token** alabilir, oluşturacağınız sipariş sonrası gelecek POST isteklerini karşılayabilirsiniz.
+This package provides to get an iframe token for your payment gateway and receive the POST requests from PayTR to your callback URL.
 
-React uygulamanız üzerinde [react-paytr](https://www.npmjs.com/package/react-paytr) bileşeni ile birlikte kullanabilirsiniz.
+If you use React on the client-side, check the
+[react-paytr](https://www.npmjs.com/package/react-paytr) package.
 
-### Yüklemek
+### Install
 
 `npm install node-paytr`
 
-### Sözde kod
+### Pseudo-code
 
 ```javascript
-...
-
 import PayTR from 'node-paytr';
 
 const paytr = new PayTR(merchant_params);
@@ -30,9 +29,9 @@ server.express.post('/callback', (req, res) => {
 })
 ```
 
-### Parametreler
+### Parameters
 
-Değerler hakkında daha fazla bilgi için entegrasyon dökümanınıza göz atın.
+Take a look to the official PayTR docs to get more details about parameters.
 
 | merchant_params       | type
 | --------          | -----------
@@ -41,7 +40,7 @@ Değerler hakkında daha fazla bilgi için entegrasyon dökümanınıza göz at�
 | merchant_salt     | string
 | debug_on          | boolean
 | no_installment    | boolean
-| max_installment   | alfanumerik
+| max_installment   | alphanumeric
 | timeout_limit      | integer
 | test_mode         | integer
 
@@ -52,7 +51,7 @@ Değerler hakkında daha fazla bilgi için entegrasyon dökümanınıza göz at�
 | user_address   | string
 | user_phone     | string
 | user_basket    | array
-| merchant_oid   | alfanumerik
+| merchant_oid   | alphanumeric
 | email          | string
 | payment_amount | integer
 | currency       | string

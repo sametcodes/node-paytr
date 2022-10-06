@@ -1,19 +1,23 @@
 {
   "name": "node-paytr",
   "version": "1.0.7",
-  "description": "PayTR e-ticaret ödeme sistemi için node kütüphanesi",
+  "description": "A node package for PayTR payment gateway",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "paytr"
+    "paytr", "node", "payment", "gateway"
   ],
-  "author": "selmansamet",
+  "author": "sametcodes",
   "license": "ISC",
   "dependencies": {
     "jssha": "^2.3.1",
     "request": "^2.88.0"
+  },
+  "repository": {
+    "url": "https://github.com/sametcodes/node-paytr",
+    "type": "git"
   },
   "devDependencies": {
     "babel": "^6.23.0",

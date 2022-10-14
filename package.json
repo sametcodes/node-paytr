@@ -1,30 +1,34 @@
 {
   "name": "node-paytr",
-  "version": "1.0.9",
+  "version": "1.0.91",
   "description": "A node package for PayTR payment gateway",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rimraf dist && tsc"
   },
   "keywords": [
-    "paytr", "node", "payment", "gateway"
+    "paytr",
+    "node",
+    "payment",
+    "gateway"
   ],
   "author": "sametcodes",
   "license": "ISC",
   "dependencies": {
+    "form-data": "^4.0.0",
     "jssha": "^2.3.1",
-    "request": "^2.88.0"
+    "node-fetch": "^2.6.7"
   },
   "repository": {
     "url": "https://github.com/sametcodes/node-paytr",
     "type": "git"
   },
   "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-latest": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1"
+    "@types/jssha": "^3.0.0",
+    "@types/node": "^18.8.4",
+    "@types/node-fetch": "^2.6.2",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.8.4"
   }
 }

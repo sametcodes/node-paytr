@@ -100,6 +100,6 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     // "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
-  "include": ["index.ts", "declarations.ts"],
+  "include": ["index.ts", "declaration.d.ts"],
   "exclude": ["node_modules"]
 }

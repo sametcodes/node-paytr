@@ -2,9 +2,6 @@
 
 This package provides to get an iframe token for your payment gateway and receive the POST requests from PayTR to your callback URL.
 
-If you use React on the client-side, check the
-[react-paytr](https://www.npmjs.com/package/react-paytr) package.
-
 ### Install
 
 `npm install node-paytr`

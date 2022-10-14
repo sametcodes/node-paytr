@@ -13,52 +13,57 @@ If you use React on the client-side, check the
 
 ```javascript
 import PayTR from 'node-paytr';
+import express from 'express';
+
+const app = express();
+app.use(express.json())
 
 const paytr = new PayTR(merchant_params);
 
-server.express.post('/get_token', (req, res) => {
-    const user_params = req.body();
+app.post('/get_token', (req, res) => {
+    const user_params = req.body;
     res.send(paytr.getToken(user_params));
 })
 
-server.express.post('/callback', (req, res) => {
+app.post('/callback', (req, res) => {
   paytr.getPost(req.body, ({merchant_oid, status}) => {
-    //...
+    // do your db lookups and updates here
   });
-  res.send("OK");
+  res.send("OK"); // this line notifies PayTR that you got the callback data
 })
 ```
 
 ### Parameters
 
-Take a look to the official PayTR docs to get more details about parameters.
+Take a look to the official PayTR docs to get more details about parameters and [type declarations](/dist/index.d.ts).
 
-| merchant_params       | type
+| Mercant | type
 | --------          | -----------
 | merchant_id       | string
 | merchant_key      | string
 | merchant_salt     | string
-| debug_on          | boolean
-| no_installment    | boolean
-| max_installment   | alphanumeric
-| timeout_limit      | integer
-| test_mode         | integer
+| debug_on          | 1 or 0 as number
+| no_installment    | 1 or 0 as number
+| max_installment   | number
+| timeout_limit     | number
+| test_mode         | 1 or 0 as number
+| lang              | string
 
-| user_params       | type
+| Transaction | type
 | --------       | -----------
 | user_ip        | string
 | user_name      | string
 | user_address   | string
 | user_phone     | string
-| user_basket    | array
-| merchant_oid   | alphanumeric
-| email          | string
 | payment_amount | integer
+| user_basket    | array
+| email          | string
+| merchant_oid   | string
 | currency       | string
 | merchant_ok_url   | string
 | merchant_fail_url | string
 
-| post_params        | type
+| POST Callback Data | type
 | --------       | -----------
 | body           | object
 | callback       | function

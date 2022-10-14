@@ -6,7 +6,9 @@ This package provides to get an iframe token for your payment gateway and receiv
 
 ### Install
 
-`npm install node-paytr`
+```
+npm install node-paytr
+```
 
 ### Pseudo-code
 
